@@ -1,10 +1,13 @@
-#include <TXLib.h>
+#include <stdio.h>
+#include <time.h>
+#include <windows.h>
 
 bool tab[20000][20000];
 bool tabv[10000][40000];
 bool tabg[40000][10000];
 bool tab1[20000][20000];
 int a = 20000;
+long tin, tout;
 
 int inpfunc();
 int gorperfunc();
@@ -15,8 +18,10 @@ int leftfunc();
 
 int main()
 {
+    tin = clock();
+
     inpfunc();
-    for(int i = 0; i < 100; i++)
+    for(int i = 0; i < 1; i++)
     {
         gorperfunc();
         verperfunc();
@@ -27,13 +32,17 @@ int main()
     }
     outpfunc();
 
+    tout = clock();
+
+    printf("%d", tout - tin);
+
     return 0;
 }
 
 int inpfunc()
 {
     FILE* input;
-    input = fopen ("int8_0_8_A.dat", "r");
+    input = fopen ("Big_sq.bin", "r");
 
     for (int x = 0; x < a; x++)
     {
