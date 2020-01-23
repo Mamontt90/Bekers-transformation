@@ -6,7 +6,7 @@ bool tab[20000][20000];
 bool tabv[10000][40000];
 bool tabg[40000][10000];
 bool tab1[20000][20000];
-int a = 20000;
+int a, m;
 long tin, tout;
 
 int inpfunc();
@@ -18,10 +18,14 @@ int leftfunc();
 
 int main()
 {
-    tin = clock();
+    printf("How long is the array? ");
+    scanf("%d", &a);
+    printf("How many times to mix? ");
+    scanf("%d", &m);
 
     inpfunc();
-    for(int i = 0; i < 1; i++)
+
+    for(long i = 0; i < m; i++)
     {
         gorperfunc();
         verperfunc();
@@ -29,12 +33,14 @@ int main()
         gorperfunc();
         verperfunc();
         rightfunc();
+
+        printf("%d\n", i + 1);
     }
     outpfunc();
 
     tout = clock();
 
-    printf("%d", tout - tin);
+    printf("Mixing time: %d", tout - tin);
 
     return 0;
 }
